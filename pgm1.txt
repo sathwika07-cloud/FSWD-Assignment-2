@@ -1,0 +1,30 @@
+import React from "react";
+
+function CourseList() {
+  const courses = [
+    { id: 1, name: "React", credits: 4, faculty: "Ravi" },
+    { id: 2, name: "Python", credits: 3, faculty: "Sita" },
+    { id: 3, name: "Java", credits: 3, faculty: "Ram" }
+  ];
+
+  return (
+    <div>
+      <h2>Course List</h2>
+
+      {courses.length === 0 ? (
+        <p>No courses available</p>
+      ) : (
+        <ul>
+          {courses.map((course) => (
+            <li key={course.id}>
+              {course.name} - {course.credits} Credits -
+              {course.faculty}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default CourseList;

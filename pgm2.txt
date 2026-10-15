@@ -1,0 +1,27 @@
+import React from "react";
+
+function Profile() {
+  const name = "Sathwika";
+  const age = 20;
+  const branch = "CSE";
+  const passed = true;
+
+  return (
+    <div style={{ textAlign: "center", color: "blue" }}>
+      <h2>{`Student Profile: ${name}`}</h2>
+
+      <img
+        src="student.jpg"
+        alt="Student"
+        className="profile-img"
+        style={{ width: "120px", borderRadius: "50%" }}
+      />
+
+      <p>Age: {age}</p>
+      <p>Branch: {branch}</p>
+      <p>Status: {passed ? "Pass" : "Fail"}</p>
+    </div>
+  );
+}
+
+export default Profile;

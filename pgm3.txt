@@ -1,0 +1,58 @@
+import React, { useState } from "react";
+
+function OnlinePoll() {
+  const options = ["React", "Python", "Java", "C"];
+  const [votes, setVotes] = useState([0, 0, 0, 0]);
+
+  const totalVotes = votes.reduce((sum, vote) => sum + vote, 0);
+
+  function vote(index) {
+    const updatedVotes = [...votes];
+    updatedVotes[index]++;
+    setVotes(updatedVotes);
+  }
+
+  return (
+    <div>
+      <h2>Online Poll</h2>
+      <h3>Which programming language do you like?</h3>
+
+      {options.map((option, index) => {
+        const percentage =
+          totalVotes === 0 ? 0 : (votes[index] / totalVotes) * 100;
+
+        return (
+          <div key={option} style={{ marginBottom: "15px" }}>
+            <button onClick={() => vote(index)}>
+              {option}
+            </button>
+
+            <p>
+              Votes: {votes[index]} | {percentage.toFixed(1)}%
+            </p>
+
+            <div
+              style={{
+                width: "100%",
+                backgroundColor: "lightgray",
+                height: "20px"
+              }}
+            >
+              <div
+                style={{
+                  width: `${percentage}%`,
+                  backgroundColor: "green",
+                  height: "20px"
+                }}
+              />
+            </div>
+          </div>
+        );
+      })}
+
+      <h3>Total Votes: {totalVotes}</h3>
+    </div>
+  );
+}
+
+export default OnlinePoll;
